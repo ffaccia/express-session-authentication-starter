@@ -13,6 +13,7 @@ require('dotenv').config();
  * DB_STRING=mongodb://<user>:<password>@localhost:27017/database_name
  */ 
 
+console.log(process.env.DB_STRING)
 const conn = process.env.DB_STRING;
 
 const connection = mongoose.createConnection(conn, {
@@ -24,7 +25,8 @@ const connection = mongoose.createConnection(conn, {
 const UserSchema = new mongoose.Schema({
     username: String,
     hash: String,
-    salt: String
+    salt: String,
+    admin: { type: Boolean, default: false }
 });
 
 
